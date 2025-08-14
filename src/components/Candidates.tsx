@@ -21,7 +21,7 @@ const candidatesData: Candidate[] = [
     id: 1,
     name: "R S B Bikarna Baidya",
     position: "President",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://drive.google.com/file/d/1ZNMsRY3sJgqMuadftyOKO6J8XWs4YGpK/view?usp=sharing",
     department: "Civil Engineering",
     year: "Final Year",
     fullProfile: "Hello NIT Durgapur family,\n\nI am R S B Bikarna Baidya, a final-year Civil Engineering student, and I am honoured to announce my candidature for the position of President in the upcoming Students' Gymkhana elections. This campus has been my home, my teacher, and my inspiration, and I am committed to giving back by ensuring every student feels represented, respected, and empowered.\n\nWith your trust and support, I will strive to make our Students' Gymkhana a voice that listens and acts, fostering a culture of unity, transparency, and growth. Together, we can build a campus where opportunities are for all, and every dream has the space to flourish.\n\nLet us lead NIT Durgapur into a future defined by unity and progress. #YourVoiceIsOurs\n\nSincerely,\nR S B Bikarna Baidya",
