@@ -1,6 +1,6 @@
-import React from 'react';
-import { Vote, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
+import { Vote, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import React from 'react';
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-900 text-white pt-16 pb-8">
@@ -18,34 +18,22 @@ export const Footer: React.FC = () => {
               Empowering students to shape their college experience through democratic participation and leadership.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-colors duration-200">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-sky-500 hover:bg-sky-600 rounded-lg flex items-center justify-center transition-colors duration-200">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-pink-600 hover:bg-pink-700 rounded-lg flex items-center justify-center transition-colors duration-200">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-blue-700 hover:bg-blue-800 rounded-lg flex items-center justify-center transition-colors duration-200">
-                <Linkedin className="h-5 w-5" />
-              </a>
+              
+              <a
+  href="https://www.instagram.com/spiritofnitd?igsh=MW5xMjc4dzYwb3k3eg==" // replace with the actual link
+  target="_blank" // opens in a new tab
+  rel="noopener noreferrer" // security best practice
+  className="w-10 h-10 bg-pink-600 hover:bg-pink-700 rounded-lg flex items-center justify-center transition-colors duration-200"
+>
+  <Instagram className="h-5 w-5" />
+</a>
+
+              
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
-            <ul className="space-y-2">
-              {['Candidates', 'Manifesto', 'About Us', 'Contact', 'Voting Guidelines', 'Election Results'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-slate-400 hover:text-white transition-colors duration-200">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          
 
           {/* Important Dates */}
           <div className="space-y-4">
@@ -72,12 +60,9 @@ export const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-slate-400">
                 <Mail className="h-5 w-5 text-blue-400" />
-                <span className="text-sm">gymkhana@college.edu</span>
+                <a href="mailto:spiritofnitd@gmail.com" className="hover:underline">spiritofnitd@gmail.com</a>
               </div>
-              <div className="flex items-center space-x-3 text-slate-400">
-                <Phone className="h-5 w-5 text-blue-400" />
-                <span className="text-sm">+91 12345 67890</span>
-              </div>
+              
               <div className="flex items-start space-x-3 text-slate-400">
                 <MapPin className="h-5 w-5 text-blue-400 mt-0.5" />
                 <span className="text-sm">

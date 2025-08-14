@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, Phone, MapPin, Send, User, MessageCircle } from 'lucide-react';
+import { submitContactForm } from '../firebase'; // make sure the path is correct
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,8 +93,9 @@ export const ContactUs: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     // Animate button on submit
     gsap.to('.submit-btn', {
       scale: 0.95,
@@ -102,18 +104,39 @@ export const ContactUs: React.FC = () => {
       repeat: 1,
       ease: "power2.inOut"
     });
-    
-    // Here you would typically handle form submission
-    console.log('Form submitted:', formData);
-    
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
-    
-    // Show success animation
-    gsap.fromTo('.success-message', 
-      { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }
-    );
+
+    try {
+      const response = await submitContactForm({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
+      });
+
+      if (response.success) {
+        // Show success message
+        const successEl = document.querySelector('.success-message') as HTMLElement;
+        if (successEl) {
+          successEl.classList.remove('hidden');
+          gsap.fromTo(successEl, 
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }
+          );
+
+          setTimeout(() => {
+            gsap.to(successEl, { scale: 0, opacity: 0, duration: 0.3, onComplete: () => successEl.classList.add('hidden') });
+          }, 3000);
+        }
+
+        // Reset form
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        alert('Failed to send message. Please try again.');
+        console.error('Submission error:', response.error || response.details);
+      }
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      alert('Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -225,19 +248,8 @@ export const ContactUs: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-slate-800 mb-1">Email Us</h4>
-                  <p className="text-slate-600">gymkhana@college.edu</p>
-                  <p className="text-slate-600">elections@college.edu</p>
-                </div>
-              </div>
-
-              <div className="contact-item flex items-start space-x-4 p-6 bg-gradient-to-r from-green-50 to-teal-50 rounded-xl border border-green-100">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
-                  <Phone className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-slate-800 mb-1">Call Us</h4>
-                  <p className="text-slate-600">+91 12345 67890</p>
-                  <p className="text-slate-600">+91 09876 54321</p>
+                  <p className="text-slate-600"><a href="mailto:spiritofnitd@gmail.com" className="hover:underline">spiritofnitd@gmail.com</a></p>
+                  
                 </div>
               </div>
 
