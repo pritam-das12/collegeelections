@@ -74,7 +74,7 @@ const candidatesData: Candidate[] = [
     id: 5,
     name: "Nikunj Buddhawar",
     position: "Assistant General Secretary (Social & Sports)",
-    image: "Nikunj.png ",
+    image: "NK.png ",
     department: "Computer Science and Engineering",
     year: "Pre-Final Year",
     fullProfile:

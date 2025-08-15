@@ -10,13 +10,13 @@ export const Navigation: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    gsap.fromTo('.nav-item', 
+    gsap.fromTo(
+      '.nav-item',
       { y: -50, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.2 }
     );
@@ -26,9 +26,9 @@ export const Navigation: React.FC = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       gsap.to(window, {
-        duration: 1,
+        duration: 0.2,
         scrollTo: { y: element, offsetY: 80 },
-        ease: "power2.inOut"
+        ease: 'power2.inOut',
       });
     }
     setIsMenuOpen(false);
@@ -42,8 +42,9 @@ export const Navigation: React.FC = () => {
           : 'bg-gradient-to-r from-yellow-500 to-orange-500'
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container lg:px-6 md:px-4 py-4 overflow-hidden">
+        <div className="flex items-center justify-between mx-2">
+          {/* Logo */}
           <div className="flex items-center space-x-2 nav-item">
             <Vote
               className={`h-8 w-8 ${
@@ -85,40 +86,53 @@ export const Navigation: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden transition-colors ${
+            className={`px-4 md:hidden transition-colors ${
               isScrolled
                 ? 'text-slate-700 hover:text-blue-600'
                 : 'text-white hover:text-blue-600'
             }`}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div
-            className={`md:hidden mt-4 py-4 rounded-lg shadow-lg ${
+      {/* Mobile Navigation Drawer */}
+      <div
+        className={`fixed top-0 right-0 h-full w-64 transform transition-transform duration-300 md:hidden shadow-lg z-40 ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        } ${isScrolled
+          ? 'bg-white/95 backdrop-blur-md'
+          : 'bg-gradient-to-r from-yellow-500 to-orange-500'
+        }`}
+      >
+        <div className="flex justify-end p-4">
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className={`${
               isScrolled
-                ? 'bg-white/95 backdrop-blur-md'
-                : 'bg-gradient-to-r from-yellow-500 to-orange-500'
+                ? 'text-slate-700 hover:text-blue-600'
+                : 'text-white hover:text-blue-600'
             }`}
           >
-            {['candidates', 'manifesto', 'about', 'contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className={`block w-full text-left px-4 py-2 capitalize transition-colors duration-200 ${
-                  isScrolled
-                    ? 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
-                    : 'text-white hover:text-blue'
-                }`}
-              >
-                {item === 'about' ? 'Know About Us' : item}
-              </button>
-            ))}
-          </div>
-        )}
+            <X size={28} />
+          </button>
+        </div>
+        <div className="flex flex-col space-y-2 p-4">
+          {['candidates', 'manifesto', 'about', 'contact'].map((item) => (
+            <button
+              key={item}
+              onClick={() => scrollToSection(item)}
+              className={`block w-full text-left px-2 py-2 rounded capitalize transition-colors duration-200 ${
+                isScrolled
+                  ? 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+                  : 'text-white hover:text-blue-200'
+              }`}
+            >
+              {item === 'about' ? 'Know About Us' : item}
+            </button>
+          ))}
+        </div>
       </div>
     </nav>
   );

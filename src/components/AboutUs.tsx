@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GraduationCap, Trophy, Users, Calendar } from "lucide-react";
+import { Trophy, Users, Calendar } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   {
     icon: Users,
-    number: "5000+",
+    number: "4000+",
     label: "Active Students",
     color: "from-blue-500 to-indigo-600",
   },
@@ -20,15 +20,9 @@ const stats = [
   },
   {
     icon: Calendar,
-    number: "100+",
+    number: "25+",
     label: "Events Organized",
     color: "from-green-500 to-teal-600",
-  },
-  {
-    icon: GraduationCap,
-    number: "25+",
-    label: "Years of Excellence",
-    color: "from-purple-500 to-pink-600",
   },
 ];
 
@@ -37,7 +31,6 @@ export const AboutUs: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.fromTo(
         ".about-title",
         { y: 50, opacity: 0 },
@@ -54,7 +47,6 @@ export const AboutUs: React.FC = () => {
         }
       );
 
-      // Content animation
       gsap.fromTo(
         ".about-content",
         { x: -100, opacity: 0 },
@@ -71,7 +63,6 @@ export const AboutUs: React.FC = () => {
         }
       );
 
-      // Stats animation
       gsap.fromTo(
         ".stat-item",
         { y: 80, opacity: 0, scale: 0.8 },
@@ -91,7 +82,6 @@ export const AboutUs: React.FC = () => {
         }
       );
 
-      // Number counter animation
       stats.forEach((stat, index) => {
         gsap.fromTo(
           `.stat-number-${index}`,
@@ -200,26 +190,55 @@ export const AboutUs: React.FC = () => {
             </div>
           </div>
 
-          <div className="stats-grid grid grid-cols-2 gap-6">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="stat-item bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center border border-white/20 hover:bg-white/20 transition-all duration-300"
-              >
-                <div
-                  className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4`}
-                >
-                  <stat.icon className="h-8 w-8 text-white" />
-                </div>
-                <div
-                  className={`stat-number-${index} text-3xl font-bold text-white mb-2`}
-                >
-                  0{stat.number.includes("+") ? "+" : ""}
-                </div>
-                <p className="text-blue-200 font-medium">{stat.label}</p>
-              </div>
-            ))}
+          {/* Triangle layout */}
+          <div className="stats-grid flex flex-col items-center gap-6">
+  {/* First row - responsive grid */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+    {stats.slice(0, 2).map((stat, index) => (
+      <div
+        key={index}
+        className="stat-item bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center border border-white/20 hover:bg-white/20 transition-all duration-300 w-full"
+      >
+        <div
+          className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4`}
+        >
+          <stat.icon className="h-8 w-8 text-white" />
+        </div>
+        <div
+          className={`stat-number-${index} text-3xl font-bold text-white mb-2`}
+        >
+          0{stat.number.includes("+") ? "+" : ""}
+        </div>
+        <p className="text-blue-200 font-medium">{stat.label}</p>
+      </div>
+    ))}
+  </div>
+
+            {/* Second row (centered) */}
+            <div className="w-full sm:w-auto">
+    {(() => {
+      const stat = stats[2];
+      const index = 2;
+      return (
+        <div
+          className="stat-item bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center border border-white/20 hover:bg-white/20 transition-all duration-300 w-full sm:w-60"
+        >
+          <div
+            className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4`}
+          >
+            <stat.icon className="h-8 w-8 text-white" />
           </div>
+          <div
+            className={`stat-number-${index} text-3xl font-bold text-white mb-2`}
+          >
+            0{stat.number.includes("+") ? "+" : ""}
+          </div>
+          <p className="text-blue-200 font-medium">{stat.label}</p>
+        </div>
+      );
+    })()}
+  </div>
+</div>
         </div>
 
         <div className="text-center">
@@ -232,8 +251,15 @@ export const AboutUs: React.FC = () => {
               chapter of our college's story. Your participation makes all the
               difference.
             </p>
-            <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-            onClick={() => window.open("https://www.instagram.com/spiritofnitd/?igsh=MW5xMjc4dzYwb3k3eg%3D%3D#", "_blank")}>
+            <button
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+              onClick={() =>
+                window.open(
+                  "https://www.instagram.com/spiritofnitd/?igsh=MW5xMjc4dzYwb3k3eg%3D%3D#",
+                  "_blank"
+                )
+              }
+            >
               Get Involved Today
             </button>
           </div>
