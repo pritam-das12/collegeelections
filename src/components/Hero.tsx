@@ -69,15 +69,16 @@ export const Hero: React.FC = () => {
   }, []);
 
   const scrollToCandidates = () => {
-    const candidatesSection = document.getElementById("candidates");
-    if (candidatesSection) {
-      gsap.to(window, {
-        duration: 1.5,
-        scrollTo: { y: candidatesSection, offsetY: 80 },
-        ease: "power2.inOut",
-      });
-    }
-  };
+  const candidatesSection = document.getElementById("candidates");
+  if (candidatesSection) {
+    gsap.to(window, {
+      duration: 0.1, // was 1.5
+      scrollTo: { y: candidatesSection, offsetY: 80 },
+      ease: "power2.inOut",
+    });
+  }
+};
+
 
   return (
     <section
@@ -133,7 +134,7 @@ export const Hero: React.FC = () => {
           className="hero-cta inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-2xl"
         >
           Meet the Candidates
-          <ChevronDown className="ml-2 h-5 w-5" />
+          
         </button>
       </div>
 
@@ -142,8 +143,8 @@ export const Hero: React.FC = () => {
           className="scroll-indicator text-white/70 flex flex-col items-center cursor-pointer"
           onClick={scrollToCandidates}
         >
-          <span className="text-sm mb-2">Scroll to explore</span>
-          <ChevronDown className="h-6 w-6 animate-bounce" />
+          <span className="text-sm mb-2 text-black">Scroll to explore</span>
+          <ChevronDown className="h-6 w-6 animate-bounce text-black" />
         </div>
       </div>
     </section>

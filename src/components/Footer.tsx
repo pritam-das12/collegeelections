@@ -25,8 +25,10 @@ export const Footer: React.FC = () => {
   rel="noopener noreferrer" // security best practice
   className="w-10 h-10 bg-pink-600 hover:bg-pink-700 rounded-lg flex items-center justify-center transition-colors duration-200"
 >
-  <Instagram className="h-5 w-5" />
+  <Instagram className="h-5 w-5" /> 
+  
 </a>
+<p className="text-white py-2">Follow us on Instagram</p>
 
               
             </div>
@@ -41,15 +43,23 @@ export const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="text-slate-400">
                 <p className="font-medium text-white">Nomination Filing</p>
-                <p className="text-sm">March 1-5, 2025</p>
+                <p className="text-sm">4th-7th August, 2025</p>
               </div>
               <div className="text-slate-400">
-                <p className="font-medium text-white">Campaign Period</p>
-                <p className="text-sm">March 6-15, 2025</p>
+                <p className="font-medium text-white">Declaration of Candidates</p>
+                <p className="text-sm">11th August, 2025</p>
               </div>
               <div className="text-slate-400">
                 <p className="font-medium text-white">Voting Day</p>
-                <p className="text-sm">March 20, 2025</p>
+                <p className="text-sm">20th August, 2025</p>
+              </div>
+              <div className="text-slate-400">
+                <p className="font-medium text-white">Counting Day</p>
+                <p className="text-sm">20th August, 2025</p>
+              </div>
+              <div className="text-slate-400">
+                <p className="font-medium text-white">Result Declaration Day</p>
+                <p className="text-sm">21st August, 2025</p>
               </div>
             </div>
           </div>
