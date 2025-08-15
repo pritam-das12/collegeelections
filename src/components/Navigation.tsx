@@ -38,7 +38,7 @@ export const Navigation: React.FC = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
+          ? 'bg-white shadow-lg'
           : 'bg-gradient-to-r from-yellow-500 to-orange-500'
       }`}
     >
@@ -99,10 +99,10 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Navigation Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 transform transition-transform duration-300 md:hidden shadow-lg z-40 ${
+        className={`fixed top-0 right-0 h-full w-64 transform transition-transform duration-300 md:hidden shadow-lg  ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         } ${isScrolled
-          ? 'bg-white/95 backdrop-blur-md'
+          ? 'bg-white shadow-lg'
           : 'bg-gradient-to-r from-yellow-500 to-orange-500'
         }`}
       >
